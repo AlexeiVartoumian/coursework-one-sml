@@ -71,5 +71,20 @@ public final class Machine {
         }
     }
 
+    /**
+     * Quick and dirty fix for the branch instruction. it will accept the IntStream
+     * from Labels to get the required index.
+     * setter method for programCounter more testcases to handle
+     * make sure register is in bounds.
+     */
+    public void setProgCounter(int getLabelIndex){
+        this.pc = getLabelIndex;
+    }
+
+    public int getLabelIndex(String label){
+        return this.labels.indexOf(label);
+    }
+
+
 
 }

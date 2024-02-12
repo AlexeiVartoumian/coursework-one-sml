@@ -122,6 +122,19 @@ public final class Translator {
                 return new OutInstruction(label, r);
             }
             //TODO: Handle branch case to consider also the div case
+            case "div" -> {
+                r = scanInt();
+                s1 = scanInt();
+                s2 = scanInt();
+                return new DivInstruction(label, r, s1, s2);
+            }
+
+            case "bnz"-> {
+                r = scanInt();
+                lbl = scan();
+
+                return new BnzInstruction(label, r, lbl);
+            }
 
             default -> System.out.println(STR."Unknown instruction: \{opCode}");
         }

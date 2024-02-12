@@ -52,4 +52,14 @@ Get something working then ican think about testing , factoryand creator patters
 and using reflection and dependency Injection to decouple the Instructions
 from the machine? need to think about this.
 </p>
+-------------------------------------------------------------------------
+<p> Branch instruction done. alot of cleanup to do but basic progrqam is
+functioning. WHOLE BUNCH of testcases to condisder with the:
+-branch instruction --> i.e what if it poitns to non-exisitent instruction, what if theres an infininte loop
+-Print Instruction --> printing non-existent instruction
+-divide instruciton --> dividing by zero
+-basice operation instruction --> handling positive and negative value? Integer Over/underflow?
+
+Next Plan 
+</p>>
 
