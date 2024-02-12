@@ -19,6 +19,7 @@ public class Main {
             t.readAndTranslate(m.labels(), m.prog());
 
             System.out.format("Here is the program; it has %d instructions.%n", m.prog().size());
+
             System.out.println(m);
 
             System.out.println("Beginning program execution.");

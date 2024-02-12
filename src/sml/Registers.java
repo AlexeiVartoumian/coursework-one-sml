@@ -17,10 +17,16 @@ import java.util.Arrays;
 @ToString
 @EqualsAndHashCode
 @Accessors(fluent = true)
+/**
+ * Note To Self.
+ * I chucked in a getRegisters method for the Print/OUT INstruction in a bif to get the sintruction to work.
+ * Will need to think about if theres a better way to do this as Now Im ust handle index of instructions being out of boudns
+ */
 public final class Registers {
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     private static final int NUMBER_OF_REGISTERS = 32;
+
 
     private final int[] registers;
 
@@ -30,6 +36,15 @@ public final class Registers {
         registers = new int[NUMBER_OF_REGISTERS];
     }
 
+    public int getRegisterValue(int registerIndex){
+        try {
+            return registers[registerIndex];
+        }catch(ArrayIndexOutOfBoundsException e){
+            System.out.println("Register :" + registerIndex + "Does not exist ");
+            //e.printStackTrace();
+        }
+        return 0;
+    }
     /**
      * Set up the registers for the SML machine.
      */

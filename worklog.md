@@ -38,3 +38,18 @@ I begin with instructions.
 -use Add Instruction as template for Mul, Div ,Sub.
 figured whatever I do the first pass will be pretty bad
 so pump something out and iterate on it.
+-------------------------------------------
+##DAY 3.1 Mon 12/02 Checkpoint:
+<p>
+Base instructions working.
+Read and Translate method filled out with case switch statements.
+Clunky implementation of Print/Out Instruction. -->
+hardcoding getters in Register Class.
+But program is kind of working
+Next Up:Branch instruction left to do.
+Overall goal:
+Get something working then ican think about testing , factoryand creator patters
+and using reflection and dependency Injection to decouple the Instructions
+from the machine? need to think about this.
+</p>
+
