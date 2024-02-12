@@ -7,7 +7,7 @@ public final class LinInstruction extends Instruction {
     private String label;
     private final int register;
     private final int value;
-    private int register2;
+
 
     public LinInstruction(final String label, int register, int value) {
         super(label, "lin");
