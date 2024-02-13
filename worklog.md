@@ -59,7 +59,18 @@ functioning. WHOLE BUNCH of testcases to condisder with the:
 -Print Instruction --> printing non-existent instruction
 -divide instruciton --> dividing by zero
 -basice operation instruction --> handling positive and negative value? Integer Over/underflow?
+ 
+</p>
+--------------------------------------------------------------------------
 
-Next Plan 
-</p>>
-
+<h3>DAY 3 Clean up working program</h3> 
+<p>Program is working. Most of the heavy lifting was done for us all I really 
+had to do yesterday was to fill in the blanks.
+Today Im feeling to get rid of some duplication. for instance 
+the Instruction class add,sub,mul,div: share the exact same behaviour I want 
+to abstract that into a functional interface I think that would be fun.
+There is also the switch statement to consider.
+We were purposely left with some reflection classes which i presume we will 
+need for a dependency injection container. Perhaps Some generic classes 
+could be involved?
+</p>

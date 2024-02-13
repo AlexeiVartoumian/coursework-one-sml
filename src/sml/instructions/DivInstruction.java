@@ -23,9 +23,10 @@ public final class DivInstruction  extends Instruction {
 
     @Override
     public void execute(Machine m){
-        var value1 = m.registers().register(register1);
-        var value2 = m.registers().register(register2);
-        m.registers().register(result, value1 / value2);
+//        var value1 = m.registers().register(register1);
+//        var value2 = m.registers().register(register2);
+//        m.registers().register(result, value1 / value2);
+        Instruction.Operator(m, result, register1, register2, Integer::divideUnsigned);
     }
     @Override
     public String toString(){
