@@ -1,8 +1,13 @@
 package sml;
 
+import jdk.dynalink.Operation;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.experimental.Accessors;
+
+import java.util.function.BiFunction;
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
 
 /**
  * This class represents an abstract instruction for the <code>SML</code> language
@@ -25,4 +30,9 @@ public abstract class Instruction {
 
     public abstract void execute(Machine m);
 
+    public static void Operator(Machine m , int result,int val1 , int val2, BiFunction<Integer,Integer,Integer>function){
+        var value1  = m.registers().register(val1);
+        var value2 = m.registers().register(val2);
+        m.registers().register( result , function.apply(value1,value2) );
+    }
 }
