@@ -62,4 +62,23 @@ functioning. WHOLE BUNCH of testcases to condisder with the:
 
 Next Plan 
 </p>>
+----------------------------------------------------------
+#Day4 Understanding the main point of the excercise
+
+The question I ask is why do I need dependency injection 
+and what problem does it solve. The heart of the work to be done is in the translator 
+class. It has several roles it reads the instruction. It also translates the instruction.
+The question to ask is "what if we increase or decrease our instruction set".
+The current implementation with switch statements require us to modify it every time we 
+so. But if we can "inject our dependency" ; that is our reliance on a given Instruction
+to carry on with the program , then there is no need to modify.
+
+As such my plan is to get rid of the switch statement and use reflection
+to create an instance of an instruction on the fly.
+
+~~
+I have no idea what I have just done. I've attempted to use Reflection
+to build instances of Instruction classes in the 
+Translator class method Return Instruction.
+It works but May God have mercy on my soul.
 

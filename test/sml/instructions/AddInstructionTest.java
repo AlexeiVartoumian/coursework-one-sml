@@ -21,14 +21,12 @@ class AddInstructionTest {
         regs = m.registers();
         //...
     }
-
     @AfterEach
     void tearDown() {
         m = null;
         i = null;
         regs = null;
     }
-
     @Test
     void executeValid() {
         regs.register(2, 5);
@@ -37,7 +35,6 @@ class AddInstructionTest {
         i.execute(m);
         Assertions.assertEquals(11, m.registers().register(1));
     }
-
     @Test
     void executeValidTwo() {
         regs.register(2, -5);

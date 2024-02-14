@@ -7,10 +7,7 @@ import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.StandardCharsets;
-import java.util.List;
-import java.util.Locale;
-import java.util.NoSuchElementException;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * This class ....
@@ -56,10 +53,13 @@ public final class Translator {
             while (line != null) {
                 // Store the label in label
                 var label = scan();
-
+                System.out.println(label+ "   ");
                 if (label.length() > 0) {
-                    var ins = getInstruction(label);
+
+                    //var ins = getInstruction(label);
+                    var ins = returnInstruction(label , scan());
                     if (ins != null) {
+
                         lab.addLabel(label);
                         prog.add(ins);
                     }
@@ -74,6 +74,8 @@ public final class Translator {
         } catch (IOException ioE) {
             System.err.println("File: IO error " + ioE);
             return false;
+        } catch (NoSuchMethodException e) {
+            throw new RuntimeException(e);
         }
         return true;
     }
@@ -90,7 +92,6 @@ public final class Translator {
             return null;
         }
         var opCode = scan();
-        
         switch (opCode) {
             case "add" -> {
                 r = scanInt();
@@ -175,13 +176,14 @@ public final class Translator {
         }
     }
 
-    private Instruction returnInstruction(final String label, String opCode) {
+    private Instruction returnInstruction(final String label, String opCode) throws NoSuchMethodException {
         String pkg = "sml.instructions";
         String base = "Instruction";
 
         // add -> sml.instructions.AddInstruction
-
+        System.out.println( label+" " +opCode + " I fool you");
         String fqcn = pkg + "." + opCode.substring(0, 1).toUpperCase(Locale.ROOT) + opCode.substring(1) + base;
+        System.out.println(label + " " + opCode);
 
         Class<?> clazz;
         try {
@@ -193,8 +195,8 @@ public final class Translator {
 
         // find the correct constructor
         var cons = findConstructor(clazz);
-        var objArray = argsForConstructor(null, label);
-
+        //var objArray = argsForConstructor(null, label);
+        var objArray = argsForConstructor(cons,label );
         try {
             return (Instruction) cons.newInstance(objArray);
         } catch (InvocationTargetException | InstantiationException | IllegalAccessException | NullPointerException e) {
@@ -204,16 +206,51 @@ public final class Translator {
     }
 
     @SuppressWarnings("SameReturnValue")
-    private Constructor<?> findConstructor(Class<?> cl) {
-        Constructor<?> cons = null;
+    private Constructor<?> findConstructor(Class<?> cl) throws NoSuchMethodException{
+        //Constructor<?> cons = null;
+        System.out.println(cl);
         // TODO
+        //return null;
+        Constructor<?>[] cons = cl.getDeclaredConstructors();
+        for (var res: cons){
+            if (res != null){
+                res.setAccessible(true);
+                return res;
+            }
+        }
+        //cons.setAccessible(true);
         return null;
     }
 
     @SuppressWarnings("SameReturnValue")
     private Object[] argsForConstructor(Constructor<?> cons, String label) {
-        Object[] argsArray = null;
+        //Object[] argsArray = null;
         // TODO
-        return null;
+        Object[] argsArray = new Object [cons.getParameterCount()];
+        Class[] ConstructorParams = cons.getParameterTypes();
+
+        String[] labelvals = new String[5];
+        int z = 0;
+        while (!line.isEmpty()){
+            labelvals[z] = scan();
+            z++;
+        }
+        System.out.println(Arrays.toString(ConstructorParams));
+        System.out.println(Arrays.toString(labelvals));
+        argsArray[0] = label;
+        for (int i = 1; i <ConstructorParams.length; i++) {
+
+            Class<?> currentType = ConstructorParams[i];
+            Object argument =null;
+                    //currentType == int.class ? argument = Integer.parseInt(labelvals[i]) : labelvals[i];
+            if (currentType == int.class){
+                argument = Integer.parseInt(labelvals[i-1]);
+            }else{
+                argument = labelvals[i-1];
+            }
+            argsArray[i] = argument;
+        }
+        System.out.println(Arrays.toString(argsArray) + "    hahaa");
+        return argsArray;
     }
 }
