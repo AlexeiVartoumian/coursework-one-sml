@@ -3,6 +3,7 @@ package sml;
 import sml.instructions.*;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -25,6 +26,8 @@ public final class Translator {
     // If word and line are not empty, line begins with whitespace
     private final String fileName; // source file of SML code
     private String line = "";
+
+    private InstructionCreator factory = InstructionCreator.getInstance();
 
     public Translator(final String file) {
         fileName = PATH + file;
@@ -56,8 +59,12 @@ public final class Translator {
                 System.out.println(label+ "   ");
                 if (label.length() > 0) {
 
+
                     //var ins = getInstruction(label);
-                    var ins = returnInstruction(label , scan());
+                    //var ins = returnInstruction(label , scan());
+                    //var ins = InstructionCreator.serveInstructionSet(line, List.of(label, scan()));
+                    List<String> args = arguments(label);
+                    var ins = InstructionCreator.serveInstructionSet(line , args);
                     if (ins != null) {
 
                         lab.addLabel(label);
@@ -74,9 +81,13 @@ public final class Translator {
         } catch (IOException ioE) {
             System.err.println("File: IO error " + ioE);
             return false;
-        } catch (NoSuchMethodException e) {
-            throw new RuntimeException(e);
         }
+//        } catch (NoSuchMethodException e) {
+//            throw new RuntimeException(e);
+//        }
+//        } catch (NoSuchMethodException e) {
+//            throw new RuntimeException(e);
+//        }
         return true;
     }
 
@@ -252,5 +263,34 @@ public final class Translator {
         }
         System.out.println(Arrays.toString(argsArray) + "    hahaa");
         return argsArray;
+    }
+    public List<String> arguments(String label){
+        String filePath = "C:\\Users\\alexv\\IdeaProjects\\coursework-one-sml-AlexeiVartoumian\\beans.properties";
+        Properties props = new Properties();
+        int lastDigit = -1; // Default value in case of failure
+
+        try (FileInputStream input = new FileInputStream(filePath)) {
+            props.load(input);
+
+            String numberStr = props.getProperty("provider.class");
+            System.out.println(numberStr);
+            int number = Integer.parseInt(numberStr.substring(numberStr.length()-1));
+
+            lastDigit = number;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println(lastDigit);
+        switch(lastDigit){
+            case 1 -> {
+                return List.of(label) ;
+            }
+            case 2 ->{
+
+                return List.of(label , scan());
+            }
+        }
+           return null;
+
     }
 }
