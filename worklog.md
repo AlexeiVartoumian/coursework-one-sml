@@ -81,4 +81,37 @@ I have no idea what I have just done. I've attempted to use Reflection
 to build instances of Instruction classes in the 
 Translator class method Return Instruction.
 It works but May God have mercy on my soul.
+-----------------------------------------------------
+##Day 5 Day of Dependency
+
+HOw would using dependency Injection make the program better? 
+what problem do I solve?
+My position is this :
+the question I want to ask here is 
+what If I want to change the Instruction set?
+
+As it stands the Translator class has two responsibilities.
+it Reads from the file.
+It translates from the file.
+If I were to change the instruction set i.e a complex archtecture
+with more addressable modes
+then I would have to completely rehaul both the getInstruction method
+and the return instruction. both rely on current implementation of Instruction class.
+These methods are the providers.
+
+My plan is to have these two methods become concrete implementations
+of a Instruction Provider interface. this interface has one responsibility.
+its task is to accept any number of String arguments and turn them into
+instructions.
+
+I will have another interface InstructionCreator. It has one role to serve 
+instances of the Instructions and it
+depends on the Provider.I only want a single instance of this.
+The binding of the two happen here.
+This is to represent and solve the case where if we want to change
+out instruction set then all that has to be done is to edit the configuration
+file.
+
+
+
 

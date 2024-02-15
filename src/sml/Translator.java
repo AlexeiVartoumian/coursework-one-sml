@@ -227,7 +227,7 @@ public final class Translator {
         //Object[] argsArray = null;
         // TODO
         Object[] argsArray = new Object [cons.getParameterCount()];
-        Class[] ConstructorParams = cons.getParameterTypes();
+        Class<?>[] ConstructorParams = cons.getParameterTypes();
 
         String[] labelvals = new String[5];
         int z = 0;
