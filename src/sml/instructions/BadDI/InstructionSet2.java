@@ -1,4 +1,6 @@
-package sml;
+package sml.instructions.BadDI;
+
+import sml.Instruction;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -6,7 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
-public class InstructionSet2 implements InstructionProvider {
+public class InstructionSet2 implements InstructionProviderOld {
     private String line;
 
     public InstructionSet2(String line){

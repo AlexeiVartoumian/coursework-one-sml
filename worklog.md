@@ -111,7 +111,17 @@ The binding of the two happen here.
 This is to represent and solve the case where if we want to change
 out instruction set then all that has to be done is to edit the configuration
 file.
+-------------------------------------------------------------------------------
+##Day6 Day of Refactoring
+I have massively overcomplicated things. In effect what I have created is a God Class and pushed
+the dependencies down the line. For some dumb reason I thought I was restricted to one key value
+pair in the beans.properties file and conjured this fancy narrative to justify something about InstructionSets.
+So instead what needs to be done is to maintain the factory class but inject at a more granular level.
 
+we do not depend on InstructionSets we depend on INSTRUCTIONS! therefore all I have to do is this
+--> get rid of instructionProvider Interface a confused analogy and. instead rely on a new class.
+the Instruction Factory. it will use the reflection stuff to create the instruction and if the implementation
+of that instruction changes then I can inject a different version through bean files like that.
 
 
 

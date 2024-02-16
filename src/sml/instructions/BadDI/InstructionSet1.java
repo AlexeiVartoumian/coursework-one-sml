@@ -1,5 +1,6 @@
-package sml;
+package sml.instructions.BadDI;
 
+import sml.Instruction;
 import sml.instructions.*;
 
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
 /**
  * This class responsibility extracts the getInstruction methods and implements it here.
  */
-public class InstructionSet1 implements InstructionProvider{
+public class InstructionSet1 implements InstructionProviderOld {
     private String line = "";
     public InstructionSet1(String line){
         this.line = line;

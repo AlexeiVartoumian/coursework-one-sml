@@ -1,6 +1,7 @@
 package sml;
 
 import sml.instructions.*;
+import sml.instructions.BadDI.InstructionCreator;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -9,6 +10,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
+import java.util.Scanner;
 
 /**
  * This class ....
@@ -63,8 +65,9 @@ public final class Translator {
                     //var ins = getInstruction(label);
                     //var ins = returnInstruction(label , scan());
                     //var ins = InstructionCreator.serveInstructionSet(line, List.of(label, scan()));
-                    List<String> args = arguments(label);
-                    var ins = InstructionCreator.serveInstructionSet(line , args);
+//                    List<String> args = arguments(label);
+//                    var ins = InstructionCreator.serveInstructionSet(line , args);
+                    var ins = InstructionFactory.createInstruction(label, scan(), line);
                     if (ins != null) {
 
                         lab.addLabel(label);
@@ -81,6 +84,8 @@ public final class Translator {
         } catch (IOException ioE) {
             System.err.println("File: IO error " + ioE);
             return false;
+        } catch (NoSuchMethodException e) {
+            throw new RuntimeException(e);
         }
 //        } catch (NoSuchMethodException e) {
 //            throw new RuntimeException(e);
@@ -264,10 +269,17 @@ public final class Translator {
         System.out.println(Arrays.toString(argsArray) + "    hahaa");
         return argsArray;
     }
+
+    /**
+     *
+     * @param label --> accepts the Identifier associated with each instruction which is used to generate
+     * @return a list of arguments with which to generate the appopriate instruction set
+     */
     public List<String> arguments(String label){
         String filePath = "C:\\Users\\alexv\\IdeaProjects\\coursework-one-sml-AlexeiVartoumian\\beans.properties";
         Properties props = new Properties();
         int lastDigit = -1; // Default value in case of failure
+
 
         try (FileInputStream input = new FileInputStream(filePath)) {
             props.load(input);

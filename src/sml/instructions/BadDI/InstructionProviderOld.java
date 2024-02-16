@@ -1,4 +1,4 @@
-package sml;
+package sml.instructions.BadDI;
 
 import sml.Instruction;
 
@@ -10,7 +10,7 @@ import java.util.List;
  * architecture and translating a Given Instruction to meet the Instruction architecture.
  * I.e maybe we want to parallelize given operands.
  */
-public interface InstructionProvider {
+public interface InstructionProviderOld {
 
     //Instruction deliverInstruction(String... args);
 

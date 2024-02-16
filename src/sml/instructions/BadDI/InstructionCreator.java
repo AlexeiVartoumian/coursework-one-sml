@@ -1,12 +1,10 @@
-package sml;
+package sml.instructions.BadDI;
 
 
+
+import sml.Instruction;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.Properties;
 
@@ -14,7 +12,7 @@ public class InstructionCreator {
 
     private static final InstructionCreator instance = new InstructionCreator();
 
-    private static InstructionProvider  imple;
+    private static InstructionProviderOld imple;
     private InstructionCreator() {
 
     };
@@ -32,17 +30,15 @@ public class InstructionCreator {
             }
             String providerClass = props.getProperty("provider.class");
 
-           imple = (InstructionProvider) Class.forName(providerClass)
+           imple = (InstructionProviderOld) Class.forName(providerClass)
                    .getDeclaredConstructor(String.class)
                    .newInstance(InstructionSet);
-
 
         } catch(Exception e){
             e.printStackTrace();
         }
         return imple.deliverInstruction(InstructionArguments);
     }
-
 
 
 }
