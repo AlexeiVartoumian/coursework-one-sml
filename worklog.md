@@ -122,6 +122,15 @@ we do not depend on InstructionSets we depend on INSTRUCTIONS! therefore all I h
 --> get rid of instructionProvider Interface a confused analogy and. instead rely on a new class.
 the Instruction Factory. it will use the reflection stuff to create the instruction and if the implementation
 of that instruction changes then I can inject a different version through bean files like that.
+---------------------------------------------------------------------
+##Day10 Day of Refactoring p2
+I have not really refactored anything.  Definitely have to write appropriate javadocs.
+Today i am going to add tests for the base instructions. Will need to think about things to test
+for at a later point.
+
+Note to self. Add more tests for each class you added as well. I should have wrote these
+tests while I was writing the code.
+
 
 
 
