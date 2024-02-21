@@ -192,6 +192,13 @@ public final class Translator {
         }
     }
 
+    /**
+     *
+     * @param label -> the identifier of the Instruction of type String
+     * @param opCode -> the type of Instruction i.e lin ,add
+     * @return -> new Instance of Instruction. Level 2 of working program was to use reflection.
+     * @throws NoSuchMethodException
+     */
     private Instruction returnInstruction(final String label, String opCode) throws NoSuchMethodException {
         String pkg = "sml.instructions";
         String base = "Instruction";

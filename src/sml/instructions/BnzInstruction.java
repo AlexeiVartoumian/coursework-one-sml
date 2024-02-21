@@ -35,6 +35,11 @@ public final class BnzInstruction  extends Instruction{
      * setting it to the return value of the int stream on Label class
      * specifically label destination. other wise do nothing.
      */
+
+    /**
+     *
+     * @param m
+     */
     @Override
     public void execute(Machine m){
         int registerval = m.registers().getRegisterValue(register);

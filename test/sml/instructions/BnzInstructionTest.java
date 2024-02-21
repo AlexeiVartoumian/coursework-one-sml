@@ -34,12 +34,12 @@ public class BnzInstructionTest {
         i.execute(m);
         Assertions.assertEquals(6, m.registers().register(2));
     }
-//    @Test
-//    void executeValidTwo() {
-//        regs.register(2, -5);
-//        regs.register(3, 6);
-//        i = new OutInstruction("lbl", 2);
-//        i.execute(m);
-//        Assertions.assertEquals(-5, m.registers().register(2));
-//    }
+    @Test
+    void executeValidTwo() {
+        regs.register(2, -5);
+        regs.register(3, 6);
+        i = new BnzInstruction("lbl", 2,"3");
+        i.execute(m);
+        Assertions.assertEquals(6, m.registers().register(3));
+    }
 }

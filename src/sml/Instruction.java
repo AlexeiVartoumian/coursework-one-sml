@@ -30,6 +30,15 @@ public abstract class Instruction {
 
     public abstract void execute(Machine m);
 
+    /**
+     *
+     * @param m -> m of type machine where the Function shall produce a side effect on
+     * @param result -> the register that will store the value
+     * @param val1 -> operand of type integer
+     * @param val2 -> operand of type integer
+     * @param function -> An optional binary function helper method for Instructions that share the similar behaviour of
+     * performing operations with two operands.
+     */
     public static void Operator(Machine m , int result,int val1 , int val2, BiFunction<Integer,Integer,Integer>function){
         var value1  = m.registers().register(val1);
         var value2 = m.registers().register(val2);
