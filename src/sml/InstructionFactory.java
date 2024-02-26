@@ -18,6 +18,7 @@ import java.util.Properties;
 
 public class InstructionFactory {
 
+    //once created InstructionFactory will not be moidified
     private static final InstructionFactory instance = new InstructionFactory();
 
     private static DeliverInstruction server = new DeliverInstruction();

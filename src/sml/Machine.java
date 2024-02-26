@@ -72,15 +72,22 @@ public final class Machine {
     }
 
     /**
-     * Quick and dirty fix for the branch instruction. it will accept the IntStream
-     * from Labels to get the required index.
-     * setter method for programCounter more testcases to handle
-     * make sure register is in bounds.
+     * Bridge Between Pattern. Because Class Machine lives in the same package as Labels as well as having an
+     * instance of it and because the Labels method indexOf is public The machine class can use a effectively
+     * use that method as a getter to set its own Program counter. This is necessary for the instructions in the sub folder
+     * who take a parameter of type machine in order to execute thier respective operation.
+     *
+     * @param getLabelIndex --> @see getLabelIndex
      */
     public void setProgCounter(int getLabelIndex){
         this.pc = getLabelIndex;
     }
 
+    /**
+     *
+     * @param label --> indentifier of a given Instruction.
+     * @return --> the index at which that Instruction occured in the MOdified ArrayList label class.
+     */
     public int getLabelIndex(String label){
         return this.labels.indexOf(label);
     }
