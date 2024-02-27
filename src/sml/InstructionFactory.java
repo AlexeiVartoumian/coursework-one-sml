@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Locale;
 import java.util.Properties;
+import java.util.function.UnaryOperator;
 
 /**
  * An Object Factory the responsibility of which is to create Class Instruction with
@@ -40,10 +41,18 @@ public class InstructionFactory {
 
 
         server.setLine(line);
-        String pkg = "sml.instructions";
-        String base = "Instruction";
+//        String pkg = "sml.instructions";
+//        String base = "Instruction";
 
-        String fqcn = pkg + "." + opCode.substring(0, 1).toUpperCase(Locale.ROOT) + opCode.substring(1) + base;
+        UnaryOperator<String> toUpper  = word ->  {
+                String capitalInstruction = "";
+                capitalInstruction = word.substring(0,1).toUpperCase() + word.substring(1);
+                return capitalInstruction;
+        };
+        //String renderInstruction = opCode.substring(0,1).toUpperCase() + opCode.substring(1);
+        String renderInstruction = toUpper.apply(opCode);
+        //System.out.println(renderInstruction);
+        //String fqcn = pkg + "." + opCode.substring(0, 1).toUpperCase(Locale.ROOT) + opCode.substring(1) + base;
 
         Properties props = new Properties();
         //String filePath = Paths.get("../../bean.properties").toString();
@@ -58,14 +67,15 @@ public class InstructionFactory {
 
             //props.forEach( (i,x) -> System.out.println(i  + " " +  x  + "     "  +  fqcn + "   " + opCode.substring(0, 1).toUpperCase(Locale.ROOT) + opCode.substring(1) + base));
 
-            String key= opCode.substring(0, 1).toUpperCase(Locale.ROOT) + opCode.substring(1) + base+".class";
-            String providerClass = props.getProperty(key);
+            //String key= opCode.substring(0, 1).toUpperCase(Locale.ROOT) + opCode.substring(1) + base+".class";
+            String providerClass = props.getProperty(renderInstruction);
 
             Class<?> clazz;
             try {
                 clazz = Class.forName(providerClass);
             } catch (ClassNotFoundException e) {
-                System.err.println(STR."Unknown instruction: \{fqcn}");
+                //System.err.println(STR."Unknown instruction: \{fqcn}");
+                System.err.println(STR."Unknown Instruction: \{opCode}");
                 return null;
             }
             var cons = server.findConstructor(clazz);
