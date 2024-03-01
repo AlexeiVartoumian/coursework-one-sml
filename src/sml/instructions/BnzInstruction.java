@@ -1,5 +1,6 @@
 package sml.instructions;
 
+import sml.Bridge;
 import sml.Instruction;
 import sml.Machine;
 
@@ -22,6 +23,8 @@ public final class BnzInstruction  extends Instruction{
     private String label;
     private final int register;
     private String labelDestination;
+    private Bridge bridge = new Bridge();
+    //private static final Bridge = new Bridge();
 
     public BnzInstruction (String label , int register , String labelDestination){
         super(label , "bnz");
@@ -46,11 +49,14 @@ public final class BnzInstruction  extends Instruction{
 
         try{
             if(registerval != 0){
-                m.setProgCounter(m.getLabelIndex(labelDestination));
+                //m.setProgCounter(m.getLabelIndex(labelDestination));
+
+                bridge.setProgramCounter(m, labelDestination);
             }
         }catch(Exception e){
             e.printStackTrace();
         }
+
 
 
     }

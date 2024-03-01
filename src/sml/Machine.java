@@ -79,18 +79,18 @@ public final class Machine {
      *
      * @param getLabelIndex --> @see getLabelIndex
      */
-    public void setProgCounter(int getLabelIndex){
-        this.pc = getLabelIndex;
-    }
+//    public void setProgCounter(int getLabelIndex){
+//        this.pc = getLabelIndex;
+//    }
 
     /**
      *
      * @param label --> indentifier of a given Instruction.
      * @return --> the index at which that Instruction occured in the MOdified ArrayList label class.
      */
-    public int getLabelIndex(String label){
-        return this.labels.indexOf(label);
-    }
+//    public int getLabelIndex(String label){
+//        return this.labels.indexOf(label);
+//    }
 
 
 

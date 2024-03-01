@@ -131,6 +131,22 @@ for at a later point.
 Note to self. Add more tests for each class you added as well. I should have wrote these
 tests while I was writing the code.
 
+--------------------------------------------------------------------
+##Day xxx Day of Bridge
+Have not looked at the project lately been learning cool stuff! 
+jumped back in to remove getters and setters on Machine class. We were not supposed to touch it but
+at the time it was the only way I could think of allowing the Bnz instruction
+to access the Label class method getindex so as to set the program counter i.e perform a jump.
+
+Bridge pattern fixes this. The way I did it was to have to fields
+of type Label and type machine and one method setProgCounter. Bnz will have 
+a extra field of type Bridge.
+When method is used pass in the machine instance which bnz knows about. then set the bridge instance of
+machine to passed in value and the Label instance to Machine.label and presto we can use the method.
+
+This means as per requirements I can leave the machine class untouched and modify the bnz class and
+add extra classes as per specification.
+
 
 
 
