@@ -146,7 +146,11 @@ machine to passed in value and the Label instance to Machine.label and presto we
 
 This means as per requirements I can leave the machine class untouched and modify the bnz class and
 add extra classes as per specification.
+--------------------------------------------------------------------
 
-
+##Cleanup
+4/03/24. Monday week left on the project. Cleaned up some hanging stuff.
+Intentionally left some things commented out to demonstrate a progression.
+Javadocs Generated. Tests are left to do.
 
 

@@ -3,6 +3,8 @@ package sml.instructions;
 import sml.Instruction;
 import sml.Machine;
 
+import java.util.function.BiFunction;
+
 /**
  *
  * TODO: handle divisions by zero. later down the line will have to consider negative operations
@@ -20,7 +22,12 @@ public final class DivInstruction  extends Instruction {
         register1 = i2;
         register2 = i3;
     }
-
+    /**
+     * @param m -> instance of machine that maintains context of program
+     * uses static method on abstract Instruction class to perform its implementation.
+     * @see sml.Instruction#Operator(Machine, int, int, int, BiFunction)
+     * for additional information
+     */
     @Override
     public void execute(Machine m){
 //        var value1 = m.registers().register(register1);

@@ -3,6 +3,8 @@ package sml.instructions;
 import sml.Instruction;
 import sml.Machine;
 
+import java.util.function.BiFunction;
+
 /**
  * same format as load Instruction
  *I only need one register
@@ -23,15 +25,15 @@ public final class OutInstruction extends Instruction {
     }
 
     /**
-     * I dont like the way im hadnling this. quick and dirty way to print the contents of the register.
-     * @param m  of type Machine.
-     *           added a getter method in Register class to access the index of Array Registers.
-     *           havent handled outof bounds indexes .
+     * Execute method Prints current Instruction and the value inside its field register Belonging to Machine.
+     *
+     *  @param m -> instance of machine that maintains context of program
+     *
      */
     public void execute(Machine m){
 
-        int registerval = m.registers().getRegisterValue(register);
-        String result = toString() + ": " + registerval;
+        int registerVal = m.registers().getRegisterValue(register);
+        String result = STR."\{this}: \{registerVal}";
         System.out.println(result);
     }
 

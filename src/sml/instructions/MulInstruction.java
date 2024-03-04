@@ -3,6 +3,8 @@ package sml.instructions;
 import sml.Instruction;
 import sml.Machine;
 
+import java.util.function.BiFunction;
+
 public final class MulInstruction extends Instruction {
 
 
@@ -19,7 +21,12 @@ public final class MulInstruction extends Instruction {
         register1 = i2;
         register2 = i3;
     }
-
+    /**
+     * @param m -> instance of machine that maintains context of program
+     * uses static method on abstract Instruction class to perform its implementation.
+     * @see sml.Instruction#Operator(Machine, int, int, int, BiFunction)
+     * for additional information
+     */
     @Override
     public void execute(Machine m ){
 

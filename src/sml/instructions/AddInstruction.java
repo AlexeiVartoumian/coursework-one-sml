@@ -3,6 +3,8 @@ package sml.instructions;
 import sml.Instruction;
 import sml.Machine;
 
+import java.util.function.BiFunction;
+
 import static java.lang.StringTemplate.STR;
 
 public final class AddInstruction extends Instruction {
@@ -18,6 +20,12 @@ public final class AddInstruction extends Instruction {
         register2 = i3;
     }
 
+    /**
+     * @param m -> instance of machine that maintains context of program
+     * uses static method on abstract Instruction class to perform its implementation.
+     * @see sml.Instruction#Operator(Machine, int, int, int, BiFunction)
+     * for additional information
+     */
     @Override
     public void execute(Machine m) {
 //        var value1 = m.registers().register(register1);

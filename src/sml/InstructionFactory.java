@@ -1,5 +1,7 @@
 package sml;
 
+import lombok.Getter;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -19,17 +21,21 @@ import java.util.function.UnaryOperator;
 
 public class InstructionFactory {
 
-    //once created InstructionFactory will not be moidified
+    //once created InstructionFactory will not be modified
+    @Getter
     private static final InstructionFactory instance = new InstructionFactory();
 
+    /**
+     * @see DeliverInstruction
+     */
     private static DeliverInstruction server = new DeliverInstruction();
     private InstructionFactory(){
 
     }
 
     /**
-     * Method CreateInstruciton uses dependencyInjection to read the String name of a Class from the beans.properties file.
-     * This is done to get the concrete implementation of an Instruction and not depend on the code.
+     * Method CreateInstruction uses dependencyInjection to read the String name of a Class from the beans.properties file.
+     * This is done to get the concrete implementation of an Instruction and not depend on hard-coded implementation of Instruction.
      *
      * @param label Instruction id , needed for bnz instruction for example
      * @param opCode - the type of instruction to perform
@@ -39,24 +45,18 @@ public class InstructionFactory {
      */
     public static Instruction createInstruction(final String label, String opCode, String line) throws NoSuchMethodException {
 
-
         server.setLine(line);
-//        String pkg = "sml.instructions";
-//        String base = "Instruction";
 
         UnaryOperator<String> toUpper  = word ->  {
                 String capitalInstruction = "";
                 capitalInstruction = word.substring(0,1).toUpperCase() + word.substring(1);
                 return capitalInstruction;
         };
-        //String renderInstruction = opCode.substring(0,1).toUpperCase() + opCode.substring(1);
+
         String renderInstruction = toUpper.apply(opCode);
-        //System.out.println(renderInstruction);
-        //String fqcn = pkg + "." + opCode.substring(0, 1).toUpperCase(Locale.ROOT) + opCode.substring(1) + base;
 
         Properties props = new Properties();
-        //String filePath = Paths.get("../../bean.properties").toString();
-        //String filePath = "C:\\Users\\alexv\\IdeaProjects\\coursework-one-sml-AlexeiVartoumian\\beans.properties";
+
         String filePath2 = "beans.properties";
             try (var resource = new FileInputStream(filePath2)) {
 
@@ -65,16 +65,12 @@ public class InstructionFactory {
                 throw new RuntimeException(e);
             }
 
-            //props.forEach( (i,x) -> System.out.println(i  + " " +  x  + "     "  +  fqcn + "   " + opCode.substring(0, 1).toUpperCase(Locale.ROOT) + opCode.substring(1) + base));
-
-            //String key= opCode.substring(0, 1).toUpperCase(Locale.ROOT) + opCode.substring(1) + base+".class";
             String providerClass = props.getProperty(renderInstruction);
 
             Class<?> clazz;
             try {
                 clazz = Class.forName(providerClass);
             } catch (ClassNotFoundException e) {
-                //System.err.println(STR."Unknown instruction: \{fqcn}");
                 System.err.println(STR."Unknown Instruction: \{opCode}");
                 return null;
             }
@@ -88,8 +84,5 @@ public class InstructionFactory {
             }
             return null;
 
-    }
-    public static InstructionFactory getInstance(){
-           return instance;
     }
 }
