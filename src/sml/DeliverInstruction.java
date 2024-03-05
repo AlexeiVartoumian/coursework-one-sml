@@ -46,7 +46,7 @@ public class DeliverInstruction {
         for (int i = 1; i <ConstructorParams.length; i++) {
 
             Class<?> currentType = ConstructorParams[i];
-            Object argument =null;
+            Object argument;
 
             if (currentType == int.class){
                 argument = Integer.parseInt(labelvals[i-1]);

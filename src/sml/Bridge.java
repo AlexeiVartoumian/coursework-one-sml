@@ -16,13 +16,11 @@ package sml;
  */
 
 public class Bridge {
-
     private Labels labels;
     protected Machine machine;
     public Bridge(){
 
     }
-
     /**
      * The whole point of this class is to access the machines.labels() arrayList. once the Index of an Instruction
      * is known a jump can be performed.

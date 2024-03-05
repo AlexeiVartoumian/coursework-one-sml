@@ -56,10 +56,6 @@ public final class Machine {
         return s.toString();
     }
 
-    /**
-     * Execute the program in prog, beginning at instruction 0. Precondition: the
-     * program and its labels have been store properly.
-     */
     public void execute() {
         pc(0);
         registers(new Registers());
@@ -70,28 +66,5 @@ public final class Machine {
             System.out.format("executed: %s%n", ins);
         }
     }
-
-    /**
-     * Bridge Between Pattern. Because Class Machine lives in the same package as Labels as well as having an
-     * instance of it and because the Labels method indexOf is public The machine class can use a effectively
-     * use that method as a getter to set its own Program counter. This is necessary for the instructions in the sub folder
-     * who take a parameter of type machine in order to execute thier respective operation.
-     *
-     * @param getLabelIndex --> @see getLabelIndex
-     */
-//    public void setProgCounter(int getLabelIndex){
-//        this.pc = getLabelIndex;
-//    }
-
-    /**
-     *
-     * @param label --> indentifier of a given Instruction.
-     * @return --> the index at which that Instruction occured in the MOdified ArrayList label class.
-     */
-//    public int getLabelIndex(String label){
-//        return this.labels.indexOf(label);
-//    }
-
-
 
 }
