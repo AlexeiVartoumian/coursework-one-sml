@@ -36,7 +36,9 @@ class AddInstructionTest {
         Assertions.assertEquals(11, m.registers().register(1));
     }
     @Test
-    void executeValidTwo() {
+    void executeValidTwo(
+
+    ) {
         regs.register(2, -5);
         regs.register(3, 6);
         i = new AddInstruction("lbl", 1, 2, 3);

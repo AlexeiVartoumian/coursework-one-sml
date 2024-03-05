@@ -153,4 +153,8 @@ add extra classes as per specification.
 Intentionally left some things commented out to demonstrate a progression.
 Javadocs Generated. Tests are left to do.
 
+----------------------------------------------------
+
+End stages
+note to past self and future self. when you write a class please test it then! 
 
