@@ -1,5 +1,7 @@
 package sml;
 
+import lombok.Setter;
+
 import java.lang.reflect.Constructor;
 
 import java.util.Arrays;
@@ -10,6 +12,7 @@ import java.util.Arrays;
  * The scan method reads a String and partitions it returning the leftmost partition of the string.
  * @author alexv
  */
+@Setter
 public class DeliverInstruction {
     private  String line;
 
@@ -20,6 +23,7 @@ public class DeliverInstruction {
         for (var res: cons){
             if (res != null){
                 res.setAccessible(true);
+
                 return res;
             }
         }
@@ -28,11 +32,12 @@ public class DeliverInstruction {
     @SuppressWarnings("SameReturnValue")
     public Object[] argsForConstructor(Constructor<?> cons, String label, String line) {
 
-        // TODO
+
         Object[] argsArray = new Object [cons.getParameterCount()];
         Class<?>[] ConstructorParams = cons.getParameterTypes();
 
         String[] labelvals = new String[cons.getParameterCount()];
+
         int z = 0;
         boolean flag = true;
         while (flag ){
@@ -58,9 +63,7 @@ public class DeliverInstruction {
 
         return argsArray;
     }
-    public void setLine(String line){
-        this.line = line;
-    }
+
     private String scan() {
         line = line.trim();
         if (line.isEmpty()) {

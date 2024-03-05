@@ -79,13 +79,25 @@ public final class Translator {
         }
         return true;
     }
+    private String scan() {
+        line = line.trim();
+        if (line.isEmpty()) {
+            return "";
+        }
 
-    /**
-     * Old implementation i.e get it to work. was first replaced with reflection which in turn was replaced/evolved to DI.
-     * @return Concrete implementation of Instruction
-     */
-    // The input line should consist of an SML instruction, with its label already removed.
-    // Translate line into an instruction with label "label" and return the instruction.
+        int i = 0;
+        while (i < line.length() && line.charAt(i) != ' ' && line.charAt(i) != '\t') {
+            i = i + 1;
+        }
+        String word = line.substring(0, i);
+        line = line.substring(i);
+        return word;
+    }
+//    Old implementation as in get it to work. was first replaced with reflection which in turn was replaced/evolved to DI.
+//    @return Concrete implementation of Instruction
+//
+//     The input line should consist of an SML instruction, with its label already removed.
+//     Translate line into an instruction with label "label" and return the instruction.
 //    public Instruction getInstruction(final String label) {
 //        int s1; // Possible operands of the instruction
 //        int s2;
@@ -108,7 +120,7 @@ public final class Translator {
 //                s1 = scanInt();
 //                return new LinInstruction(label, r, s1);
 //            }
-//            // TODO: You will have to write code here for the other instructions.
+//
 //            case "sub" -> {
 //                r = scanInt();
 //                s1 = scanInt();
@@ -149,20 +161,7 @@ public final class Translator {
      * Return the first word of line and remove it from line. If there is no word,
      * return ""
      */
-    private String scan() {
-        line = line.trim();
-        if (line.isEmpty()) {
-            return "";
-        }
 
-        int i = 0;
-        while (i < line.length() && line.charAt(i) != ' ' && line.charAt(i) != '\t') {
-            i = i + 1;
-        }
-        String word = line.substring(0, i);
-        line = line.substring(i);
-        return word;
-    }
 
     // Return the first word of line as an integer. If there is any error, return
     // the maximum int
@@ -179,9 +178,9 @@ public final class Translator {
 //        }
 //    }
 
-    /**
-     * Old implementation that used reflection to create Instances of Instruction class at Runtime.
-     */
+
+//     Old implementation that used reflection to create Instances of Instruction class at Runtime.
+
 //    private Instruction returnInstruction(final String label, String opCode) throws NoSuchMethodException {
 //        String pkg = "sml.instructions";
 //        String base = "Instruction";
