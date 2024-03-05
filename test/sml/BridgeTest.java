@@ -4,10 +4,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import sml.instructions.AddInstruction;
-import sml.instructions.BnzInstruction;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 class BridgeTest {
 
