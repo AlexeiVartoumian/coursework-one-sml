@@ -1,6 +1,5 @@
 package sml.instructions;
 
-import lombok.Getter;
 import sml.Bridge;
 import sml.Instruction;
 import sml.Machine;
@@ -11,7 +10,7 @@ import sml.Machine;
 
 public final class BnzInstruction  extends Instruction{
 
-    private String label;
+
     private final int register;
 
     /**

@@ -4,7 +4,6 @@ import lombok.Setter;
 
 import java.lang.reflect.Constructor;
 
-import java.util.Arrays;
 
 /**
  * Utility class whose responsibility is to enable InstructionFactory to implement Dependency Injection.
@@ -20,6 +19,7 @@ public class DeliverInstruction {
     @SuppressWarnings("SameReturnValue")
     public Constructor<?> findConstructor(Class<?> cl) throws NoSuchMethodException{
         Constructor<?>[] cons = cl.getDeclaredConstructors();
+
         for (var res: cons){
             if (res != null){
                 res.setAccessible(true);

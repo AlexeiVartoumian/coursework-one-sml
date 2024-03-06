@@ -4,7 +4,7 @@ import sml.Instruction;
 import sml.Machine;
 
 public final class LinInstruction extends Instruction {
-    private String label;
+
     private final int register;
     private final int value;
 
@@ -19,7 +19,7 @@ public final class LinInstruction extends Instruction {
     public void execute(Machine m) {
 
         m.registers().register(register, value);
-        // TODO
+
     }
 
     @Override

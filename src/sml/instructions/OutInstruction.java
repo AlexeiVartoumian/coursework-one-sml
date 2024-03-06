@@ -3,18 +3,13 @@ package sml.instructions;
 import sml.Instruction;
 import sml.Machine;
 
-import java.util.function.BiFunction;
-
 /**
  * same format as load Instruction
  *I only need one register
- *
- * //TODO:Test case to consider that nothing is in fact stored in the register
- *
+ * @see sml.instructions.LinInstruction
  */
 public final class OutInstruction extends Instruction {
 
-    private String label;
 
     private final int register;
 

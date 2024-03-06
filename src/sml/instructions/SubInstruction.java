@@ -9,7 +9,7 @@ import java.util.function.BiFunction;
  * Requires  two registers to operate and
  */
 public final class SubInstruction extends Instruction {
-    private String label;
+
     private final int result;
 
     private final int register1;

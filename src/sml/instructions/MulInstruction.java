@@ -8,7 +8,6 @@ import java.util.function.BiFunction;
 public final class MulInstruction extends Instruction {
 
 
-    private String label;
 
     private final int result;
     private final int register1;

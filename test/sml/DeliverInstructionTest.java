@@ -1,11 +1,11 @@
 package sml;
 
-import org.junit.jupiter.api.Assertions;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Constructor;
-import java.util.Properties;
+
 
 import static org.junit.jupiter.api.Assertions.*;
 

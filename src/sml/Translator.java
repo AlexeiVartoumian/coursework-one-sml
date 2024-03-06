@@ -71,13 +71,14 @@ public final class Translator {
                     return false;
                 }
             }
+            return true;
         } catch (IOException ioE) {
             System.err.println("File: IO error " + ioE);
             return false;
         } catch (NoSuchMethodException e) {
             throw new RuntimeException(e);
         }
-        return true;
+
     }
     private String scan() {
         line = line.trim();

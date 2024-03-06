@@ -11,7 +11,6 @@ import java.util.function.BiFunction;
  */
 public final class DivInstruction  extends Instruction {
 
-    private String label;
     private final int result;
     private final int register1;
     private final int register2;

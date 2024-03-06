@@ -8,7 +8,7 @@ import java.util.function.BiFunction;
 import static java.lang.StringTemplate.STR;
 
 public final class AddInstruction extends Instruction {
-    private String label;
+
     private final int result;
     private final int register1;
     private final int register2;

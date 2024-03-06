@@ -3,17 +3,17 @@ package sml;
 import lombok.Getter;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.util.Locale;
+
 import java.util.Properties;
 import java.util.function.UnaryOperator;
 
 /**
  * An Object Factory the responsibility of which is to create Class Instruction with
  *  dependency Injection done through primary method CreateInstruction.
- *
+
  * This class uses an abstract factory patter along with the Singleton Pattern
  * to ensure only one Instance of Instruction Factory can create instructions.
  * @author Alexei vartoumian
@@ -41,14 +41,14 @@ public class InstructionFactory {
      * @param opCode - the type of instruction to perform
      * @param line - the operands on which qiven Opcode requires
      * @return Instruction
-     * @throws NoSuchMethodException
+     *
      */
     public static Instruction createInstruction(final String label, String opCode, String line) throws NoSuchMethodException {
 
         server.setLine(line);
 
         UnaryOperator<String> toUpper  = word ->  {
-                String capitalInstruction = "";
+                String capitalInstruction;
                 capitalInstruction = word.substring(0,1).toUpperCase() + word.substring(1);
                 return capitalInstruction;
         };
