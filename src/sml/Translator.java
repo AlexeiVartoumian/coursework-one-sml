@@ -209,14 +209,14 @@ public final class Translator {
 //        }
 //        return null;
 //    }
-    /**
-     * Helper method for returnInstruction . created Constructor for a Classname.
-     */
+//
+     //Helper method for returnInstruction . created Constructor for a Classname.
+
     //   @SuppressWarnings("SameReturnValue")
 //    private Constructor<?> findConstructor(Class<?> cl) throws NoSuchMethodException{
 //        //Constructor<?> cons = null;
 //        System.out.println(cl);
-//        // TODO
+//
 //        //return null;
 //        Constructor<?>[] cons = cl.getDeclaredConstructors();
 //        for (var res: cons){
@@ -229,13 +229,13 @@ public final class Translator {
 //        return null;
 //    }
 
-    /**
-     * Helper method for returnInstruction method. creates suitable params for a constructor.
-     */
+    //
+     // Helper method for returnInstruction method. creates suitable params for a constructor.
+
     //@SuppressWarnings("SameReturnValue")
 //    private Object[] argsForConstructor(Constructor<?> cons, String label) {
 //        //Object[] argsArray = null;
-//        // TODO
+//
 //        Object[] argsArray = new Object [cons.getParameterCount()];
 //        Class<?>[] ConstructorParams = cons.getParameterTypes();
 //
@@ -264,15 +264,15 @@ public final class Translator {
 //        return argsArray;
 //    }
 
-    /**
-     * old stuff .  This was a helper method
-     * for when I wrongly thought use case of DI was to depend on a souped up method DeliverInstruction.
-     * I turned that method into a class with the argument that it Provided the InstructionSet architecture and therefore
-     * if we wanted to change the way All instructions are implemented then this should be changed.
-     * The current version is more granular where the DI is focussed on the specific instructions.
-     * @param label --> accepts the Identifier associated with each instruction which is used to generate
-     * @return a list of arguments with which to generate the appopriate instruction set
-     */
+//    /**
+//     * old stuff .  This was a helper method
+//     * for when I wrongly thought use case of DI was to depend on a souped up method DeliverInstruction.
+//     * I turned that method into a class with the argument that it Provided the InstructionSet architecture and therefore
+//     * if we wanted to change the way All instructions are implemented then this should be changed.
+//     * The current version is more granular where the DI is focussed on the specific instructions.
+//     * @param label --> accepts the Identifier associated with each instruction which is used to generate
+//     * @return a list of arguments with which to generate the appopriate instruction set
+//     */
 //    public List<String> arguments(String label){
 //        String filePath = "beans.properties";
 //        Properties props = new Properties();

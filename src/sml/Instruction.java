@@ -29,11 +29,11 @@ public abstract class Instruction {
      *
      *     Intended for Operator Instructions Add, Subtract, Multiply ,Divide.
      *     Now instead of three lines a one liner can be written.
-     *
+
      *     var value1 = m.registers().register(register1);
      *     var value2 = m.registers().register(register2);
      *     m.registers().register(result, value1 + value2);
-     *
+
      *     Will now be this:
      *     Instruction.Operator(m , result , register1,register2, Integer::sum);
      *</p>

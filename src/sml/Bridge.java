@@ -3,7 +3,7 @@ package sml;
 /**
  * Utility Class.
  * Used as A wrapper to byPass access privileges for subclass instructions that live in a different package.
- * It has two Fields that it knows about
+ * It has two Fields
  * 1.Labels:  keeps track of index of instructions implemented as a ArrayList
  * 2.Machine: which executes the program instructions.
  *
